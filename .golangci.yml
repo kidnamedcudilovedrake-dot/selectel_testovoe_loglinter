@@ -1,0 +1,28 @@
+# Example golangci-lint configuration demonstrating how to use the loglint plugin
+# (Legacy Go Plugin system using .so files)
+
+linters:
+  enable:
+    - loglint
+
+linters-settings:
+  custom:
+    loglint:
+      path: ./loglint.so
+      description: "Custom linter that validates log message styles and checks for sensitive data leaks"
+      original-url: github.com/selectel-tasks/loglint
+      settings:
+        rules:
+          lowercase: true
+          english_only: true
+          no_special_chars: true
+          no_sensitive: true
+        sensitive_keywords:
+          - password
+          - token
+          - api_key
+          - secret
+        sensitive_patterns:
+          - "^secret_.*$"
+          - "^key_[0-9]+$"
+        forbidden_chars: "!?"

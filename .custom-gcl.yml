@@ -1,0 +1,9 @@
+# Example configuration for the modern Module Plugin System.
+# Build custom golangci-lint binary by running: golangci-lint custom
+
+version: v1.66.2
+
+plugins:
+  - module: github.com/selectel-tasks/loglint/pkg/plugin
+    import: github.com/selectel-tasks/loglint/pkg/plugin
+    version: latest
